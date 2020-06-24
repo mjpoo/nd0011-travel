@@ -80,7 +80,37 @@ header h1 {
     margin-left: 20px;
 }
 
+#searchForm{
+    background: #f0f0f0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0px;
+    font-size: 26px;
 
+    #intro{
+        margin-bottom: 20px;
+    }
+
+    #location{
+        font-size: 26px;
+        padding: 2px 10px;
+        max-width: 40vw;
+        border: 0px solid #6e7696;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+
+    button{
+        font-size: 26px;
+        padding: 1px 10px;
+        background: teal;
+        color: #fff;
+        max-width: 40vw;
+        border: 1px solid teal;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+}
 
 #tileContainer{
     display: grid;
@@ -122,23 +152,28 @@ header h1 {
 .tileimagewrapper{
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: cover;
     text-align: right;    
-    height:150px;
+    height:150px;    
 }
 
 .tile-body{
     padding: 0px 10px 0px 10px;
+
+    span{
+        display: block;
+    }
 }
 
-#tile1{
+#locationTile{
     background-image:url('https://img.yachting.org/gallery/12/250/13885.jpg');
 }
 
-#tile2{
+#weatherTile{
     background-image:url('https://img.yachting.org/gallery/12/250/13884.jpg');
 }
 
-#tile3{
+#sunTile{
     background-image:url('https://img.yachting.org/gallery/12/250/12638.jpg');
 }
 

@@ -3,6 +3,8 @@ var path = require('path');
 const express = require('express');
 const app = express();
 
+const axios = require('axios');
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -21,14 +23,72 @@ app.get('/', function (req, res) {                                  // Displays 
     res.sendFile('dist/index.html');
 })
 
-// app.post('/api', cors(), function (req, res) {                       // For the API calls
-//     textapi.sentiment({
-//         // 'url': 'https://www.yachting.org'
-//         'url': req.body.articleUrl
-//     }, function(error, response) {
-//         res.send(response)
-//     })
-// })
+app.post('/geo', cors(), function (req, res) {
+    // Use Geonames API
+    // console.log('getting', req.body.location);
+
+    axios.get('http://api.geonames.org/searchJSON', {
+        params: {
+            maxRows: 1,
+            q: req.body.location,
+            username: process.env.GEONAMES_USERNAME
+        }
+    }).then(resp => {
+        // console.log(resp.data.geonames[0]);
+      res.end(JSON.stringify(resp.data.geonames[0]));
+    //   getWeather(lat, lon);
+    })
+    .catch(err => {
+        // console.log(err);
+        // console.log(err.response.status);
+      res.end(JSON.stringify({'Error' : err}));
+    })
+})
+
+app.post('/photo', cors(), function (req, res) {
+    // Use Pixabay API
+    console.log('Getting the photo from Pixabay');
+
+    axios.get('https://pixabay.com/api/', {
+        params: {
+            q: req.body.location,
+            image_type: 'photo',
+            category: 'travel',
+            key: process.env.PIXABAY_KEY
+        }
+    }).then(resp => {
+        console.log(resp.data);
+      res.end(JSON.stringify(resp.data));
+    })
+    .catch(err => {
+        // console.log(err);
+        console.log(err.response.data);
+        // console.log(err.response.status);
+      res.end(JSON.stringify({'Error' : err}));
+    })
+})
+
+app.post('/weather', cors(), function (req, res) {
+    // Use Weatherbit API
+    console.log('Getting the weather from Weatherbit');
+
+    axios.get('https://api.weatherbit.io/v2.0/current', {
+        params: {
+            units: 'M',
+            lat: req.body.lat,
+            lon: req.body.lon,
+            key: process.env.WEATHERBIT_KEY
+        }
+    }).then(resp => {
+        // console.log(resp.data);
+      res.end(JSON.stringify(resp.data));
+    })
+    .catch(err => {
+        // console.log(err);
+        // console.log(err.response.status);
+      res.end(JSON.stringify({'Error' : err}));
+    })
+})
 
 app.listen(8081, function () {
     console.log('App listening on port 8081');
