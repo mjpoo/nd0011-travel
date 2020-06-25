@@ -21,10 +21,10 @@ function getLocation() {
     )
     .then(function(res) {
         console.log(res);
+        capstone.location = res.name;
+        capstone.country = res.countryName;
         capstone.lat = res.lat;
         capstone.lon = res.lng;
-        document.getElementById('locationTitle').innerHTML = `${res.name}`;
-        document.getElementById('locationBlurb').innerHTML = `${res.name} is in ${res.countryName}<br>Latitude: <strong>${capstone.lat}&deg;</strong><br>Longitude: <strong>${capstone.lon}&deg;</strong>`;
 
         // Now that we know the location we can get the weather and photos
         getWeather();

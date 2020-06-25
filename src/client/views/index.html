@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Capstone Travel App</title>
+    <title>Travel Weather</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="favicon.ico">
@@ -11,48 +11,32 @@
 
 <body>
     <header>
-        <h1>Capstone Travel</h1>
+        <h1>Travel Weather</h1>
     </header>
 
+    <main>
+        <form id="searchForm">
+            <div id="intro">Where would you like to visit?</div>
+            <input type="text" id="location" placeholder="Destination city name"><button>Search</button>
+        </form>
 
-    <form id="searchForm">
-        <div id="intro">Where would you like to visit?</div>
-        <input type="text" id="location" placeholder="Destination city name"><button>Search</button>
-    </form>
-
-
-    <div id="tileContainer">
-        <div class="tilewrapper">
-            <div class="tileinnerwrapper">
-                <div id="locationTile" class="tileimagewrapper"></div>
-            </div>
-            <div class="tile-body">
-                <h2 id="locationTitle">Location</h2>
-                <span id="locationBlurb"></span>
-            </div>
+        <div id="results">
+            <!-- <h2 id="locationTitle">Location</h2>
+            <span id="locationBlurb"></span> -->
+            <div id="weatherImage" class="tileimagewrapper"></div>
+            <div id="weatherBlurb"></div>
+            <div id="rainBlurb"></div>
+            <div id="temperatureBlurb"></div>
+            <div id="sunBlurb"></div>
         </div>
 
-        <div class="tilewrapper">
-            <div class="tileinnerwrapper">
-                <div id="weatherTile" class="tileimagewrapper"></div>
-            </div>
-            <div class="tile-body">
-                <h2 id="weatherTitle">Weather</h2>
-                <span id="weatherBlurb"></span>
-            </div>
-        </div>
+        <form id="dateForm">
+            <div id="dateIntro">Would you like to visit on a different day?</div>
+            <input id="datePicker">
+        </form>
 
-        <div class="tilewrapper">
-            <div class="tileinnerwrapper">
-                <div id="sunTile" class="tileimagewrapper"></div>
-            </div>
-            <div class="tile-body">
-                <h2 id="sunTitle">Daylight Hours</h2>
-                <span id="sunBlurb"></span>
-            </div>
-        </div>
-
-    </div>
+        
+    </main>
 </body>
 
 <!-- <script>
