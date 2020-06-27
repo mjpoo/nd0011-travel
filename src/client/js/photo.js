@@ -1,4 +1,10 @@
 const capstone = localStorage;
+
+// console.log('capstone');
+// if(!capstone){
+//     capstone.location = '';
+// }
+
 let photoData;
 let photoID = 0;
 var photoInterval = setInterval(updatePhotos, 7000);
@@ -21,11 +27,13 @@ function getPhoto() {
 }
 
 function updatePhotos(){
-    if(photoData.total > 0) {
-        displayPhoto();
-        (photoData.hits.length > photoID) ? photoID += 1 : photoID = 0;
-    } else {
-        document.querySelector('body').style.backgroundImage = `url("https://cdn.pixabay.com/photo/2018/05/17/16/03/compass-3408928_960_720.jpg")`;
+    if(photoData){
+        if(photoData.total > 0) {
+            displayPhoto();
+            (photoData.hits.length > photoID) ? photoID += 1 : photoID = 0;
+        } else {
+            document.querySelector('body').style.backgroundImage = `url("https://cdn.pixabay.com/photo/2018/05/17/16/03/compass-3408928_960_720.jpg")`;
+        }
     }
 }
 

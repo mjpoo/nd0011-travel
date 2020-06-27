@@ -4,7 +4,7 @@ import { getWeather } from "./weather";
 const capstone = localStorage;
 // let location = document.getElementById('location').value;
 
-console.log(capstone.lat);
+console.log(capstone);
 
 function getLocation() {
     console.log('Location', capstone.location);
