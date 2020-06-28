@@ -2,9 +2,6 @@ import { getPhoto } from "./photo";
 import { getWeather } from "./weather";
 
 const capstone = localStorage;      // Notice the use of Local Storage for persistance (i.e. the additional customisation required by rubric)
-// let coords = window.coords;
-
-console.log(capstone);
 
 function getLocation() {
     // console.log('Location', capstone.location);

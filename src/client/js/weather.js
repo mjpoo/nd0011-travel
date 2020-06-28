@@ -1,5 +1,4 @@
 const capstone = localStorage;
-// const coords = window.coords;
 
 let hist;
 let dateDiff = 0;
@@ -12,24 +11,30 @@ const datepicker = require('js-datepicker');
 
 const picker = datepicker('#datePicker', {
     onSelect: (instance, d) => {
-        console.log(d);
-        capstone.longDate = d;
+// datePicker.addEventListener('change', (e) => {
+    console.log('clicked');
+    // const d = document.querySelector('#datePicker').value;
+    console.log(d);
+    capstone.longDate = d;
 
-        dateDiff = Math.floor((d - Date.now()) / (1000*60*60*24));
-        console.log(dateDiff);
+    dateDiff = Math.floor((d - Date.now()) / (1000*60*60*24));
+    console.log(dateDiff);
 
-        (dateDiff < -1 || dateDiff > 16) ? hist = true: hist = false;
-        console.log(hist);
+    (dateDiff < -1 || dateDiff > 16) ? hist = true: hist = false;
+    console.log(hist);
 
-        capstone.monthId = d.getMonth();
-        capstone.dateId = d.getDate();
+    capstone.monthId = d.getMonth();
+    capstone.dateId = d.getDate();
 
-        (dateDiff > 16) ? shortDate = 2019 : shortDate = d.getFullYear();                // So it gets the date from historical year for historical records
-        shortDate = shortDate + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    (dateDiff > 16) ? shortDate = 2019 : shortDate = d.getFullYear();                // So it gets the date from historical year for historical records
+    shortDate = shortDate + '-' + (d.getMonth() + 1) + '-' + d.getDate();
 
-        console.log(shortDate);
-        capstone.date = shortDate;
-        getWeather();
+    console.log(shortDate);
+    capstone.date = shortDate;
+    getWeather();
+// });
+
+
     }
 });
 
