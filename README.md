@@ -14,15 +14,14 @@ The app requires a local server
 * npm build-prod
 * npm start (to run Express in separate terminal)
 
-## Dependencies
-
-
 ## Modes
 * Dev Environment [Port 8080](http://localhost:8080/) npm run build-dev
 * Prod Environment [Port 8081](http://localhost:8081/) npm run build-prod
 
 ## API
-* **Aylien** [Text Analysis API](https://developer.aylien.com/)
+* [Geonames](https://www.geonames.org)
+* [Pixabay](https://pixabay.com)
+* [Weatherbit](https://www.weatherbit.io)
 
 ## Authors
 * **Mike Poole** [Yachting Limited](https://www.yachting.org/)
