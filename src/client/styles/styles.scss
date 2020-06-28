@@ -99,6 +99,11 @@ main{
             border-top-right-radius: 6px;
             border-bottom-right-radius: 6px;
         }
+
+        button:hover{
+            background: goldenrod;
+            border: 2px solid goldenrod;            
+        }
     }
   
     .tileimagewrapper{
@@ -112,26 +117,14 @@ main{
 
 
 /* This site is desktop first */ 
-@media (max-width: 780px) {
-    #tileContainer{
-        grid-template-columns: repeat(2, 250px);
-    }
-}
+// @media (max-width: 780px) {
+//     #tileContainer{
+//         grid-template-columns: repeat(2, 250px);
+//     }
+// }
 
-@media (max-width: 520px) {
-    #tileContainer{
-        grid-template-columns: 250px;
-    }
-}
-
-@media (max-width: 750px) {
-    #cadizImage{
-        width: 150px;
-    }
-}
-
-@media (max-width: 520px) {
-    #cadizImage{
-        width: 100px;
-    }
-}
+// @media (max-width: 520px) {
+//     #tileContainer{
+//         grid-template-columns: 250px;
+//     }
+// }

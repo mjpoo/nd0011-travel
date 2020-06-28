@@ -15,12 +15,20 @@ app.use(cors());
 const dotenv = require('dotenv');
 dotenv.config();
 
+require('babel-polyfill');
+
 app.use(express.static('dist'))                                     // Initialise the distribution folder
 
 // THE ROUTES
 app.get('/', function (req, res) {                                  // Displays the homepage in Prod mode
     // console.log('Loading prod homepage');
     res.sendFile('dist/index.html');
+})
+
+app.get('/testserver', function (req, res) {                        // Endpoint that Jest can use
+    res.json({
+        test: 'test passed',
+    });
 })
 
 app.post('/geo', cors(), function (req, res) {
@@ -106,3 +114,5 @@ app.post('/weather', cors(), function (req, res) {
 app.listen(8081, function () {
     console.log('App listening on port 8081');
 })
+
+module.exports = app;       // Seems perverse that need to do this to fit the test suite
