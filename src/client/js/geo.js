@@ -2,12 +2,11 @@ import { getPhoto } from "./photo";
 import { getWeather } from "./weather";
 
 const capstone = localStorage;
-// let location = document.getElementById('location').value;
 
 console.log(capstone);
 
 function getLocation() {
-    console.log('Location', capstone.location);
+    // console.log('Location', capstone.location);
 
     fetch('http://localhost:8081/geo', {
         method: 'POST',
@@ -42,11 +41,13 @@ if (!document.getElementById('location').value) {
     }
 };
 
-// and listen to the form 
-document.querySelector("#searchForm").addEventListener('submit', (event) => {
-    capstone.location = document.getElementById('location').value;
-    event.preventDefault();
-    getLocation();
+// and listen to the form once the DOM has loaded
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector("#searchForm").addEventListener('submit', (event) => {
+        capstone.location = document.getElementById('location').value;
+        event.preventDefault();
+        getLocation();
+    });
 });
 
 export { getLocation }
