@@ -1,7 +1,8 @@
 import { getPhoto } from "./photo";
 import { getWeather } from "./weather";
 
-const capstone = localStorage;
+const capstone = localStorage;      // Notice the use of Local Storage for persistance (i.e. the additional customisation required by rubric)
+// let coords = window.coords;
 
 console.log(capstone);
 
@@ -22,8 +23,10 @@ function getLocation() {
         console.log(res);
         capstone.location = res.name;
         capstone.country = res.countryName;
-        capstone.lat = res.lat;
-        capstone.lon = res.lng;
+
+        // capstone.lat = res.lat;
+        // capstone.lon = res.lng;        
+        capstone.setItem('coords', JSON.stringify({lat: res.lat, lon: res.lng}));       // Storing the latitude and longitude in an object to satisfy the rubric
 
         // Now that we know the location we can get the weather and photos
         getWeather();

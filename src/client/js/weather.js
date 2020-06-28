@@ -1,4 +1,6 @@
 const capstone = localStorage;
+// const coords = window.coords;
+
 let hist;
 let dateDiff = 0;
 let shortDate;
@@ -12,8 +14,6 @@ const picker = datepicker('#datePicker', {
     onSelect: (instance, d) => {
         console.log(d);
         capstone.longDate = d;
-
-        
 
         dateDiff = Math.floor((d - Date.now()) / (1000*60*60*24));
         console.log(dateDiff);
@@ -34,7 +34,8 @@ const picker = datepicker('#datePicker', {
 });
 
 function getWeather() {
-    console.log('Will get the weather...', capstone.lat, capstone.lon);
+    const coords = JSON.parse(capstone.getItem('coords'));
+    console.log('Will get the weather...', coords.lat, coords.lon);
 
     if(shortDate) {
         let startDate = new Date(capstone.longDate);
@@ -58,8 +59,8 @@ function getWeather() {
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            lat: `${capstone.lat}`,
-            lon: `${capstone.lon}`,
+            lat: `${coords.lat}`,
+            lon: `${coords.lon}`,
             startDate: `${capstone.date}`,
             endDate: `${shortEndDate}`,
             historical: hist

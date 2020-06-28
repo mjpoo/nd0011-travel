@@ -93,7 +93,7 @@ app.post('/weather', cors(), function (req, res) {
             key: process.env.WEATHERBIT_KEY
         }
     }).then(resp => {
-        console.log(resp.data);
+        // console.log(resp.data);
         res.end(JSON.stringify(resp.data));
     })
         .catch(err => {
