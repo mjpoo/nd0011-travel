@@ -1,10 +1,4 @@
 const capstone = localStorage;
-
-// console.log('capstone');
-// if(!capstone){
-//     capstone.location = '';
-// }
-
 let photoData;
 let photoID = 0;
 var photoInterval = setInterval(updatePhotos, 7000);
@@ -19,8 +13,6 @@ function getPhoto() {
     .then(res => res.json())
     .then(function(res) {
         photoData = res;    // Put the results into our own object
-        console.log('There are', photoData.total, 'photos');
-        console.log('The array has', photoData.hits.length, 'photos');
         updatePhotos();     // Initial one to kick it off
         photoInterval;      // Then the intervals
     })

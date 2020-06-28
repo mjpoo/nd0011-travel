@@ -4,6 +4,8 @@ This app was created as the final piece of coursework for the Udacity Front End 
 ## Rubric
 Complies with the [Travel app project rubric](https://review.udacity.com/#!/rubrics/2669/view)
 
+The special feature is `Local Storage`.
+
 ## Server
 The app requires a local server
 * Node

@@ -4,8 +4,6 @@ import { getWeather } from "./weather";
 const capstone = localStorage;      // Notice the use of Local Storage for persistance (i.e. the additional customisation required by rubric)
 
 function getLocation() {
-    // console.log('Location', capstone.location);
-
     fetch('http://localhost:8081/geo', {
         method: 'POST',
         mode: 'cors',
@@ -13,11 +11,9 @@ function getLocation() {
         body: JSON.stringify({location: `${capstone.location}`})
     })
     .then(
-        // console.log(res)
         res => res.json()
     )
     .then(function(res) {
-        console.log(res);
         capstone.location = res.name;
         capstone.country = res.countryName;
 
@@ -34,7 +30,6 @@ function getLocation() {
 // When they first come to the page prepopulate the previous location
 if (!document.getElementById('location').value) {
     if(capstone.location){
-        console.log('Welcome back!');
         document.getElementById('intro').value = 'Welcome back! Do you still want to go to ${capstone.location}?';
         document.getElementById('location').value = capstone.location;
         getLocation();
